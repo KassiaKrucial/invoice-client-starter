@@ -10,10 +10,25 @@ import {CZMoney} from "../utils/CZMoneyFormatter";
  * @constructor Makes an instance of the home page of invoices
  */
 const InvoiceIndex = () => {
+    /**
+     * Contains list of buyers
+     */
     const [buyerListState, setBuyerList] = useState([]);
+    /**
+     * Contains list of sellers
+     */
     const [sellerListState, setSellerList] = useState([]);
+    /**
+     * Contains list of invoices
+     */
     const [invoices, setInvoices] = useState([]);
+    /**
+     * Contains the general statistics for invoices i.e. sum of revenue for every/current year and the total count of invoices
+     */
     const [generalStatisticState, setGeneralStatictic] = useState({});
+    /**
+     * Contains values for filtering invoices
+     */
     const [filterState, setFilter] = useState({
         sellerID: undefined,
         buyerID: undefined,
@@ -23,22 +38,33 @@ const InvoiceIndex = () => {
         limit: undefined
     });
 
+    /**
+     * Deletes an invoice by id
+     * @param id Id of an invoice sent via url parameter
+     * @returns {Promise<void>} List of invoices minus the deleted one or error message
+     */
     const deleteInvoice = async (id) => {
         try {
             await apiDelete("/api/invoices/" + id);
         } catch (error) {
-            console.log(error.message);
             alert(error.message)
         }
         setInvoices(invoices.filter((item) => item._id !== id));
     };
 
+    /**
+     * Fetches data for sellers, buyers, invoices and general statistics for invoices
+     */
     useEffect(() => {
         apiGet("/api/persons").then((data) => {setSellerList(data); setBuyerList(data)})
         apiGet("/api/invoices/statistics").then((data) => setGeneralStatictic(data));
         apiGet("/api/invoices").then((data) => setInvoices(data));
     }, []);
 
+    /**
+     * Reacts to user's change of filtering criteria
+     * @param e Event - change of filter fields
+     */
     const handleChange = (e) => {
         if (e.target.value === "false" || e.target.value === "true" || e.target.value === '') {
             setFilter(prevState => {
@@ -51,6 +77,11 @@ const InvoiceIndex = () => {
         }
     }
 
+    /**
+     * Filters data
+     * @param e Event - submit
+     * @returns {Promise<void>} List of filtered invoices
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const params = filterState;
