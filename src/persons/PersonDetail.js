@@ -21,8 +21,7 @@
  */
 
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
-
+import {useParams} from "react-router-dom";
 import {apiGet} from "../utils/api";
 import Country from "./Country";
 import SalesAndPurchasesTable from "./SalesAndPurchasesTable";
