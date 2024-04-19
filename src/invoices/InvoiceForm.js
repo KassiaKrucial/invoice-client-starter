@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { apiGet, apiPost, apiPut } from "../utils/api";
 import InputField from "../components/InputField";
 import InputSelect from "../components/InputSelect";
 import FlashMessage from "../components/FlashMessage";
 
+/**
+ * Creates a form for creating or updating invoices
+ * @returns {JSX.Element} Renders the form
+ * @constructor Makes an instance of the form
+ */
 const InvoiceForm = () => {
     const navigate = useNavigate();
     const {id} = useParams();
