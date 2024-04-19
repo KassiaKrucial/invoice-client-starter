@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * This component can make a text, textarea, number or date type input for forms depending on props sent
+ * @param props props.type...input type, </br> props.rows...height of textarea </br>props.name...input name, </br>props.prompt...prompt for user, </br>props.value...input value, </br>props.label...input label, </br>props.handleChange...what should happen on user's action
+ * @returns {JSX.Element|null} Renders the chosen input type
+ * @constructor Makes an instance of the chosen input
+ */
 export function InputField(props) {
   // podporované typy pro element input
   const INPUTS = ["text", "number", "date"];
