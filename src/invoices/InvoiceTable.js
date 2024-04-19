@@ -3,6 +3,14 @@ import {Link} from "react-router-dom";
 import { CZMoney } from "../utils/CZMoneyFormatter";
 import dateStringFormatter from "../utils/dateStringFormatter";
 
+/**
+ * Creates a html table for rendering a list of invoices and their CRUD operations
+ * @param label Label for the total count of invoices
+ * @param items Represents one invoice
+ * @param deleteInvoice A method for deleting an invoice by id
+ * @returns {JSX.Element} Renders the table with mapped invoices
+ * @constructor Makes an instance of a html table containing a list of invoices
+ */
 const InvoiceTable = ({label, items, deleteInvoice}) => {
     return (
         <div>
