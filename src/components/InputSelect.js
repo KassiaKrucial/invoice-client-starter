@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Creates a html select
+ * @param props </br>props.name...input name, </br>props.multiple...can multiple options be selected, </br>props.prompt...prompt to user, </br>props.value...input value, </br>props.label...input label, </br>props.handleChange...what should happen on user's action
+ * @returns {JSX.Element} Renders the select with mapped options
+ * @constructor Makes an instance of html select
+ */
 export function InputSelect(props) {
   const multiple = props.multiple;
   const required = props.required || false;
