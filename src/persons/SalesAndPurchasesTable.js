@@ -8,8 +8,6 @@ import {Link} from "react-router-dom";
  * @constructor Makes an instance of a html table filled with invoices
  */
 const SalesAndPurchasesTable = ({items, isSeller}) => {
-    console.log("vypis z komponenty" + isSeller);
-    console.log(items);
     if (!items) {
         return <p>Načítám...</p>
     }
