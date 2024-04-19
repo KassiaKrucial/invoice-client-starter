@@ -11,8 +11,18 @@ import FlashMessage from "../components/FlashMessage";
  * @constructor Makes an instance of the form
  */
 const InvoiceForm = () => {
+    /**
+     * Used to redirect
+     * @type {NavigateFunction}
+     */
     const navigate = useNavigate();
+    /**
+     * Contains id of invoice to use in url parameter
+     */
     const {id} = useParams();
+    /**
+     * Contains the invoice data
+     */
     const [invoice, setInvoice] = useState({
         invoiceNumber: "",
         seller: {
@@ -29,25 +39,50 @@ const InvoiceForm = () => {
         note: ""
     });
 
+    /**
+     * Contains people/companies to select a seller from
+     */
     const [sellerListState, setSellerList] = useState([]);
+    /**
+     * Contains people/companies to select a buyer from
+     */
     const [buyerListState, setBuyerList] = useState([]);
-
+    /**
+     * Checks if the form was sent at all
+     */
     const [sentState, setSent] = useState(false);
+    /**
+     * Checks if the form was sent successfully
+     */
     const [successState, setSuccess] = useState(false);
+    /**
+     * Contains error message, if the form was not successfully sent
+     */
     const [errorState, setError] = useState(null);
 
+
     useEffect(() => {
+        /**
+         * Fetches data for a specific invoice using url param id
+         */
         if (id) {
             apiGet("/api/invoices/" + id).then((data) => {
                 setInvoice(data);
             });
         }
+        /**
+         * Fetches data to fill selects for seller and buyer
+         */
         apiGet("/api/persons").then((data) => {setSellerList(data); setBuyerList(data)});
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        /**
+         * On submit either creates a new invoice or updates an existing one, then redirects to invoices index
+         * Catches error messages from server and renders them
+         */
         (id ? apiPut("/api/invoices/" + id, invoice) : apiPost("/api/invoices", invoice))
             .then(() => {setSent(true);
                 setSuccess(true);

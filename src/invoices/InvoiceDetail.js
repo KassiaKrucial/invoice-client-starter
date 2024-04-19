@@ -11,13 +11,25 @@ import PersonInfoCard from "../persons/PersonInfoCard";
  * @constructor Makes an instance of a detail page of an invoice
  */
 const InvoiceDetail = () => {
+    /**
+     * Contains invoice id to use in url parameter
+     */
     const {id} = useParams();
+    /**
+     * Contains data of an invoice
+     */
     const [invoice, setInvoice] = useState({});
+    /**
+     * Contains the data of a seller
+     */
     const [seller, setSeller] = useState({});
+    /**
+     * Contains the data of a buyer
+     */
     const [buyer, setBuyer] = useState({})
 
     /**
-     * Serves to get data of a specific invoice (url param id) from server and waits for them
+     * Fetches data of a specific invoice (url param id) from server
      */
     useEffect(() => {
         apiGet("/api/invoices/" + id).then((data) => {
