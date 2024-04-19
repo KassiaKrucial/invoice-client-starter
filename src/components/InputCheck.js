@@ -1,3 +1,9 @@
+/**
+ * This component can make a checkbox or radio type input for forms depending on props sent
+ * @param props props.type...input type, </br>props.name...input name, </br>props.value...input value, </br>props.label...input label, </br>props.handleChange...what should happen on user's action
+ * @returns {JSX.Element|null} Renders the chosen type of input
+ * @constructor Makes an instance of chosen input
+ */
 export function InputCheck(props) {
   // podporované typy pro element input
   const INPUTS = ["checkbox", "radio"];
