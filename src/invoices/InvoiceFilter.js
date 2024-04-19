@@ -2,6 +2,12 @@ import React from "react";
 import InputSelect from "../components/InputSelect";
 import InputField from "../components/InputField";
 
+/**
+ * Creates form for filtering invoices
+ * @param props Gets values by which to filter data
+ * @returns {JSX.Element} Renders the filter
+ * @constructor Makes an instance of filter for invoices
+ */
 const InvoiceFilter = (props) => {
 
     const handleChange = (e) => {
