@@ -49,8 +49,7 @@ const InvoiceForm = () => {
         e.preventDefault();
 
         (id ? apiPut("/api/invoices/" + id, invoice) : apiPost("/api/invoices", invoice))
-            .then((data) => {
-                setSent(true);
+            .then(() => {setSent(true);
                 setSuccess(true);
                 navigate("/invoices");
             })

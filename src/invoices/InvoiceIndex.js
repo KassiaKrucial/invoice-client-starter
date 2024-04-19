@@ -4,6 +4,11 @@ import InvoiceTable from "./InvoiceTable";
 import InvoiceFilter from "./InvoiceFilter";
 import {CZMoney} from "../utils/CZMoneyFormatter";
 
+/**
+ * Creates the home page of invoices
+ * @returns {JSX.Element} Renders the home page of invoices with a list of them and CRUD their CRUD options
+ * @constructor Makes an instance of the home page of invoices
+ */
 const InvoiceIndex = () => {
     const [buyerListState, setBuyerList] = useState([]);
     const [sellerListState, setSellerList] = useState([]);
