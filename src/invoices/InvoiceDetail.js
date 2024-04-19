@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import dateStringFormatter from "../utils/dateStringFormatter";
 import { CZMoney } from "../utils/CZMoneyFormatter";
 import PersonInfoCard from "./PersonInfoCard";
 
+/**
+ * Creates the detail page of an invoice
+ * @returns {JSX.Element} Renders the detail page of an invoice with data sent by server
+ * @constructor Makes an instance of a detail page of an invoice
+ */
 const InvoiceDetail = () => {
     const {id} = useParams();
     const [invoice, setInvoice] = useState({});
     const [seller, setSeller] = useState({});
     const [buyer, setBuyer] = useState({})
 
+    /**
+     * Serves to get data of a specific invoice (url param id) from server and waits for them
+     */
     useEffect(() => {
         apiGet("/api/invoices/" + id).then((data) => {
             setInvoice(data);
