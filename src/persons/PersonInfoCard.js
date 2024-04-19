@@ -1,5 +1,12 @@
 import {Link} from "react-router-dom";
 
+/**
+ * Creates a bootstrap card containing basic information of a person/company
+ * @param person Contains the data of a person/company
+ * @param isSeller Set as true if the person/company is the seller, false if they are the buyer
+ * @returns {JSX.Element} Renders the card with the person's/company's info
+ * @constructor Makes an instance of this card
+ */
 const PersonInfoCard = ({person, isSeller}) => {
     return (
         <div className="card">

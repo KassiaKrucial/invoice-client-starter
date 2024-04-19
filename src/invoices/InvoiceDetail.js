@@ -3,7 +3,7 @@ import { apiGet } from "../utils/api";
 import {useParams} from "react-router-dom";
 import dateStringFormatter from "../utils/dateStringFormatter";
 import { CZMoney } from "../utils/CZMoneyFormatter";
-import PersonInfoCard from "./PersonInfoCard";
+import PersonInfoCard from "../persons/PersonInfoCard";
 
 /**
  * Creates the detail page of an invoice
